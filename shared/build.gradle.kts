@@ -33,6 +33,8 @@ kotlin {
         val mokoVersion = "0.16.1"
         val kamelVersion = "0.7.1"
         val kodeinVersion = "7.19.0"
+        val voyagerVersion = "1.0.0-rc06"
+        val klockVersion = "4.0.9"
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
@@ -40,14 +42,15 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation(compose.materialIconsExtended)
                 implementation("media.kamel:kamel-image:$kamelVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerialization")
-                api("dev.icerock.moko:mvvm-core:$mokoVersion")
-                api("dev.icerock.moko:mvvm-compose:$mokoVersion")
                 implementation("org.kodein.di:kodein-di:$kodeinVersion")
+                implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+                implementation("com.soywiz.korlibs.klock:klock:$klockVersion")
             }
         }
         val androidMain by getting {

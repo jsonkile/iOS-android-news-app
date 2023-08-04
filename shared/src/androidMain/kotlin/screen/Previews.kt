@@ -3,8 +3,8 @@ package screen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import models.Headline
-import ui.screens.HeaderCard
-import ui.screens.HeadlineCard
+import ui.components.HeaderCard
+import ui.components.HeadlineCard
 import ui.screens.HomeScreen
 
 @Preview
@@ -16,7 +16,9 @@ fun PreviewHomeScreen() {
 @Preview
 @Composable
 fun PreviewHeaderCard() {
-    HeaderCard(headline = Headline(title = "Headline card for the masses"))
+    HeaderCard(headline = Headline(title = "Headline card for the masses")){
+
+    }
 }
 
 @Preview
@@ -27,5 +29,7 @@ fun PreviewHeadlineCard() {
             title = "Headline card for the masses",
             source = Headline.Source(name = "Channels TV")
         )
-    )
+    ){
+
+    }
 }

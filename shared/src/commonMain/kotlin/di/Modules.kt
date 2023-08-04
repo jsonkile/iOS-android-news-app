@@ -15,7 +15,9 @@ import org.kodein.di.provider
 import util.CustomException
 
 val diContainer = DI {
+    //constants
     bindConstant("apiKey") { "8be0ef4b8253433e857342ba877641f8" }
+
     bind {
         provider {
             HttpClient {

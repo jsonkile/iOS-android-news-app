@@ -1,6 +1,7 @@
-package ui.viewmodels
+package ui.screenmodels
 
-import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.coroutineScope
 import di.diContainer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,7 +13,7 @@ import org.kodein.di.newInstance
 import repo.NewsRepositoryRemoteImpl
 import util.CustomException
 
-class HomeViewModel : ViewModel() {
+class HomeScreenModel : ScreenModel {
 
     private val newsRepository by diContainer.newInstance {
         NewsRepositoryRemoteImpl(
@@ -35,7 +36,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun fetchHeadlines() {
-        viewModelScope.launch {
+        coroutineScope.launch {
             try {
                 val headlines = newsRepository.fetchHeadlines(countryCode = "us", pageSize = 20)
                 updateHeadlines(headlines)
