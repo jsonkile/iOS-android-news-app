@@ -36,3 +36,7 @@ android {
         jvmToolchain(17)
     }
 }
+
+dependencies {
+    implementation("org.kodein.di:kodein-di:7.20.1")
+}

@@ -1,5 +1,7 @@
 package di
 
+import com.myapplication.Database
+import com.myapplication.DatabaseDriverFactory
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
@@ -11,6 +13,7 @@ import models.NewsApiError
 import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.bindConstant
+import org.kodein.di.bindSingleton
 import org.kodein.di.provider
 import util.CustomException
 
@@ -21,7 +24,7 @@ val diContainer = DI {
     bind {
         provider {
             HttpClient {
-                expectSuccess = true
+                expectSuccess = false
 
                 defaultRequest {
                     url("https://newsapi.org/v2/")
@@ -43,4 +46,6 @@ val diContainer = DI {
             }
         }
     }
+
+    bindSingleton { Database(DatabaseDriverFactory) }
 }

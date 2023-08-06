@@ -23,6 +23,7 @@ pluginManagement {
         id("com.android.library").version(agpVersion)
 
         id("org.jetbrains.compose").version(composeVersion)
+        id("com.squareup.sqldelight").version("1.5.5")
     }
 }
 

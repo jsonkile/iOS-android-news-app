@@ -4,6 +4,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.compose")
     id("kotlinx-serialization")
+    id("com.squareup.sqldelight")
 }
 
 kotlin {
@@ -30,11 +31,12 @@ kotlin {
     sourceSets {
         val ktorVersion = "2.3.2"
         val kotlinSerialization = "1.5.1"
-        val mokoVersion = "0.16.1"
         val kamelVersion = "0.7.1"
         val kodeinVersion = "7.19.0"
         val voyagerVersion = "1.0.0-rc06"
         val klockVersion = "4.0.9"
+        val sqlDelightVersion = "1.5.5"
+
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
@@ -51,6 +53,7 @@ kotlin {
                 implementation("org.kodein.di:kodein-di:$kodeinVersion")
                 implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
                 implementation("com.soywiz.korlibs.klock:klock:$klockVersion")
+                implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
             }
         }
         val androidMain by getting {
@@ -62,6 +65,7 @@ kotlin {
                 implementation(compose.uiTooling)
                 implementation(compose.preview)
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
+                implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
             }
         }
         val iosX64Main by getting
@@ -75,6 +79,7 @@ kotlin {
 
             dependencies {
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+                implementation("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
             }
         }
     }
@@ -104,5 +109,11 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
+    }
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.myapplication"
     }
 }

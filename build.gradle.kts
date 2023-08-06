@@ -6,4 +6,5 @@ plugins {
     id("com.android.library").apply(false)
     id("org.jetbrains.compose").apply(false)
     kotlin("plugin.serialization") version "1.8.21" apply false
+    id("com.squareup.sqldelight") version "1.5.5" apply false
 }

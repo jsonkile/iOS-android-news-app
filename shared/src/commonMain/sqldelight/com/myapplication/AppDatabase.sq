@@ -1,0 +1,21 @@
+CREATE TABLE Headline (
+author TEXT,
+content TEXT NOT NULL,
+description TEXT,
+urlToImage TEXT,
+url TEXT,
+title TEXT NOT NULL,
+sourceName TEXT,
+publishedAt TEXT
+);
+
+insertHeadline:
+INSERT INTO Headline(author, content, description, urlToImage, url, title, sourceName, publishedAt)
+VALUES(?, ?, ?, ?, ?, ?, ?, ?);
+
+removeAllHeadlines:
+DELETE FROM Headline;
+
+selectAllHeadlinesInfo:
+SELECT Headline.*
+FROM Headline;
